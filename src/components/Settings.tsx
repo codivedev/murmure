@@ -348,12 +348,12 @@ function Settings(): React.ReactElement {
                 <div className="flex items-center space-x-4">
                   <span className="text-gray-400">GitHub</span>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/codivedev/murmure"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-400 hover:underline"
                   >
-                    github.com/murmure
+                    github.com/codivedev/murmure
                   </a>
                 </div>
                 <div className="flex items-center space-x-4">

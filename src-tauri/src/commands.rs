@@ -6,7 +6,7 @@ use crate::input::inserter::insert_text as insert_text_impl;
 use crate::input::shortcut::register;
 use crate::input::window::{get_active_window as get_active_window_impl, WindowInfo};
 use crate::types::{Settings, TranscriptionResult, AudioConfig, SampleFormat};
-use crate::audio::{AudioRecorder, encode_to_wav};
+use crate::audio::{AudioRecorder, encode_to_opus};
 use tauri::Emitter;
 use once_cell::sync::Lazy;
 use std::sync::Mutex;
@@ -60,14 +60,14 @@ pub fn stop_audio_recording(app: tauri::AppHandle) -> Result<Vec<u8>> {
     let pcm = rec.stop_recording()?;
     let duration_ms = rec.get_duration_ms();
     
-    let wav_data = encode_to_wav(&pcm, &AUDIO_CONFIG)?;
+    let opus_data = encode_to_opus(&pcm, &AUDIO_CONFIG)?;
     
     app.emit("audio-recording-stopped", serde_json::json!({ "duration_ms": duration_ms }))
         .map_err(|e| AppError::AudioError(e.to_string()))?;
-    app.emit("audio-data-ready", serde_json::json!({ "size_bytes": wav_data.len() }))
+    app.emit("audio-data-ready", serde_json::json!({ "size_bytes": opus_data.len() }))
         .map_err(|e| AppError::AudioError(e.to_string()))?;
     
-    Ok(wav_data)
+    Ok(opus_data)
 }
 
 #[tauri::command]
