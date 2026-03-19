@@ -1,26 +1,27 @@
 # Murmure
 
-Voice dictation application using Groq Whisper API.
+Application de dictée vocale utilisant l'API Groq Whisper.
 
-## Features
+## Fonctionnalités
 
-- Voice-to-text transcription via Groq Whisper API
-- Global shortcut activation (default: Ctrl+Space)
-- System tray integration
-- Setup wizard for first-time users
-- Settings management
+- Transcription voix-vers-texte via l'API Groq Whisper
+- Activation par raccourci clavier global (défaut : Ctrl+Space)
+- Icône dans la barre système
+- Assistant de configuration pour les nouveaux utilisateurs
+- Interface en français
+- Support multilingue (Français, Anglais, Espagnol, Allemand, Italien, Portugais, Japonais, Chinois, Coréen)
 
 ## Installation (Pop!_OS/Ubuntu)
 
-### Prerequisites
+### Prérequis
 
-- Node.js 18+ and npm
-- Rust (latest stable)
+- Node.js 18+ et npm
+- Rust (dernière version stable)
 - Tauri CLI
 
-### Setup
+### Installation
 
-1. Install system dependencies:
+1. Installer les dépendances système :
 
 ```bash
 sudo apt update
@@ -35,121 +36,107 @@ sudo apt install -y libwebkit2gtk-4.1-dev \
     librsvg2-dev
 ```
 
-2. Install Rust:
+2. Installer Rust :
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-3. Install Tauri CLI:
+3. Installer Tauri CLI :
 
 ```bash
 npm install -g @tauri-apps/cli
 ```
 
-4. Clone and install dependencies:
+4. Cloner et installer les dépendances :
 
 ```bash
-git clone <repository-url>
-cd murmure2
+git clone https://github.com/codivedev/murmure.git
+cd murmure
 npm install
 ```
 
-## Usage
+## Utilisation
 
-### First-Time Setup
+### Première utilisation
 
-1. Launch the application
-2. The setup wizard will guide you through:
-   - Entering your Groq API key
-   - Configuring global shortcut
-   - Setting transcription preferences
+1. Lancer l'application
+2. L'assistant de configuration vous guidera pour :
+   - Entrer votre clé API Groq
+   - Configurer le raccourci clavier
+   - Tester votre microphone
 
-### Recording
+### Enregistrement
 
-1. Press the global shortcut (default: Ctrl+Space)
-2. Speak your text
-3. Press the shortcut again to stop recording
-4. Transcription appears in the output area
+1. Appuyez sur le raccourci (défaut : Ctrl+Space)
+2. Parlez votre texte
+3. Appuyez à nouveau sur le raccourci pour arrêter
+4. La transcription s'affiche et est insérée automatiquement
 
-### System Tray
+### Barre système
 
-- Right-click the tray icon to access quick actions
-- Open settings, show/hide window, or quit the application
+- Clic droit sur l'icône pour accéder aux actions rapides
+- Ouvrir les paramètres ou quitter l'application
 
 ## Configuration
 
-### Settings
+### Paramètres
 
-Access settings via the system tray or main window:
+Accédez aux paramètres via la barre système ou la fenêtre principale :
 
-- **API Key**: Your Groq Whisper API key
-- **Global Shortcut**: Key combination to activate recording
-- **Language**: Transcription language preference
-- **Auto-copy**: Automatically copy transcription to clipboard
+- **Clé API** : Votre clé API Groq
+- **Raccourci** : Combinaison de touches pour activer l'enregistrement
+- **Langue** : Langue de transcription
 
-### Environment Variables
+## Développement
 
-- `VITE_GROQ_API_KEY`: Groq API key (can be set via UI)
-
-## Troubleshooting
-
-### Global Shortcut Not Working
-
-- Ensure you're running X11 (Wayland is not supported)
-- Check if another application is using the same shortcut
-- Restart the application after changing shortcut settings
-
-### Transcription Fails
-
-- Verify your Groq API key is valid
-- Check your internet connection
-- Ensure your microphone is accessible
-
-### Build Errors
-
-- Update system dependencies: `sudo apt update && sudo apt upgrade`
-- Reinstall Rust: `rustup update`
-- Clear npm cache: `npm cache clean --force`
-
-## Development Setup
-
-### Prerequisites
-
-- Node.js 18+
-- Rust (latest stable)
-- System dependencies listed in Installation section
-
-### Commands
+### Commandes
 
 ```bash
-# Install dependencies
+# Installer les dépendances
 npm install
 
-# Start development server (frontend)
+# Serveur de développement (frontend)
 npm run dev
 
-# Build frontend
+# Compiler le frontend
 npm run build
 
-# Run Tauri app in development mode
-cargo tauri dev
+# Lancer l'application en mode développement
+npm run tauri:dev
 
-# Build production application
-cargo tauri build
+# Compiler l'application pour la production
+npm run tauri:build
 ```
 
-### Project Structure
+### Structure du projet
 
-- `src/` - Frontend React/TypeScript code
-- `src-tauri/` - Rust backend code
-- `public/` - Static assets
+- `src/` - Code frontend React/TypeScript
+- `src-tauri/` - Code backend Rust
+- `src/components/` - Composants React
+- `src/hooks/` - Hooks React personnalisés
+- `src/utils/` - Utilitaires et API Tauri
 
-## License
+## Technologies
 
-MIT License - see [LICENSE](LICENSE) file for details.
+- **Frontend** : React 19, TypeScript, TailwindCSS, Vite
+- **Backend** : Tauri v2, Rust
+- **API** : Groq Whisper
 
-## Known Issues
+## Problèmes connus
 
-- Audio module incomplete (Plans 2-3 not implemented)
-- X11 only (Wayland not supported for global shortcuts)
+- X11 uniquement (Wayland non supporté pour les raccourcis globaux)
+- Module audio en cours de développement
+
+## Licence
+
+MIT License - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## Auteur
+
+[CodiveDev](https://github.com/codivedev)
+
+## Liens
+
+- [GitHub](https://github.com/codivedev/murmure)
+- [Console Groq](https://console.groq.com)

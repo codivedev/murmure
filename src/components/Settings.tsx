@@ -346,6 +346,17 @@ function Settings(): React.ReactElement {
                   <span className="text-white font-medium">0.1.0</span>
                 </div>
                 <div className="flex items-center space-x-4">
+                  <span className="text-gray-400">Auteur</span>
+                  <a
+                    href="https://github.com/codivedev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:underline"
+                  >
+                    CodiveDev
+                  </a>
+                </div>
+                <div className="flex items-center space-x-4">
                   <span className="text-gray-400">GitHub</span>
                   <a
                     href="https://github.com/codivedev/murmure"
@@ -355,6 +366,10 @@ function Settings(): React.ReactElement {
                   >
                     github.com/codivedev/murmure
                   </a>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <span className="text-gray-400">Licence</span>
+                  <span className="text-white">MIT</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <span className="text-gray-400">Console Groq</span>
